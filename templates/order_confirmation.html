@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Order Confirmation</h1>
+        <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+    </header>
+    <main>
+        <section class="order-details">
+            <h2>Thank You for Your Order!</h2>
+            <p>Order ID: <strong>{{ order.id }}</strong></p>
+            <p>Total Price: <strong>${{ "%.2f" % order.total_price }}</strong></p>
+            <p>Order Status: <strong>{{ order.status }}</strong></p>
+            <p>Order Date: <strong>{{ order.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</strong></p>
+            <p>You will receive a confirmation email shortly.</p>
+        </section>
+        <section class="next-steps">
+            <h3>Next Steps</h3>
+            <ul>
+                <li>Track your order status from your <a href="{{ url_for('profile') }}">profile</a>.</li>
+                <li>Continue <a href="{{ url_for('home') }}">shopping</a> for more great products!</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

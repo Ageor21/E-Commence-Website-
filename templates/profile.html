@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - E-Commerce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Your Profile</h1>
+        <a href="{{ url_for('home') }}"><u>Back to Home</u></a>
+    </header>
+    <main>
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <!-- User Details -->
+        <section class="user-details">
+            <h2>Personal Information</h2>
+            <form method="post" class="profile-form">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" value="{{ user.name }}" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" value="{{ user.email }}" required>
+
+                <label for="password">Password (leave blank to keep current password):</label>
+                <input type="password" name="password" id="password" placeholder="New password (min 6 chars)">
+
+                <button type="submit">Update Profile</button>
+            </form>
+        </section>
+
+        <!-- Order History -->
+        <section class="order-history">
+            <h2>Order History</h2>
+            {% if orders %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                        <td>${{ order.total_price }}</td>
+                        <td>{{ order.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>You have no orders yet.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

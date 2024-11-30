@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Product Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>{{ product.name }}</h1>
+        <a href="{{ url_for('home') }}"><u>Back to Home</u></a>
+    </header>
+    <main>
+        <!-- Product Details Section -->
+        <div class="product-detail">
+            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+            <div class="product-info">
+                <p><strong>Description:</strong> {{ product.description }}</p>
+                <p><strong>Price:</strong> ${{ product.price }}</p>
+                <p><strong>Stock:</strong> {{ product.stock }}</p>
+                <form method="post" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" value="1" min="1" max="{{ product.stock }}" required>
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2>Customer Reviews</h2>
+            {% if total_reviews > 0 %}
+            <p class="average-rating">
+                Average Rating: {{ "%.1f" % avg_rating }} / 5 ({{ total_reviews }} reviews)
+            </p>
+            <ul class="review-list">
+                {% for review in reviews %}
+                <li class="review">
+                    <p><strong>{{ review.user.name }}</strong></p>
+                    <!-- Star Rating Display -->
+                    <div class="star-display">
+                        {% for i in range(1, 6) %}
+                        {% if i <= review.rating %}
+                        <span class="star">&#9733;</span> <!-- Filled Star -->
+                        {% else %}
+                        <span class="star empty">&#9734;</span> <!-- Empty Star -->
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <p>{{ review.content }}</p>
+                    <small>Submitted on {{ review.created_at.strftime('%Y-%m-%d') }}</small>
+                    {% if session.get('user_id') == review.user_id %}
+                    <!-- Edit and Delete Actions -->
+                    <div class="review-actions">
+                        <a href="{{ url_for('edit_review', product_id=product.id, review_id=review.id) }}" class="edit-button">Edit</a>
+                        <form method="post" action="{{ url_for('delete_review', product_id=product.id, review_id=review.id) }}" class="delete-form">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No reviews yet. Be the first to review this product!</p>
+            {% endif %}
+
+            <!-- Submit Review Section -->
+            {% if session.get('user_id') %}
+            <form method="post" class="review-form">
+                <label for="rating">Rating:</label>
+                <div class="star-rating">
+                    {% for i in range(1, 6) %}
+                    <input type="radio" name="rating" id="star-{{ i }}" value="{{ i }}" required>
+                    <label for="star-{{ i }}">&#9733;</label>
+                    {% endfor %}
+                </div>
+                <label for="content">Your Review:</label>
+                <textarea name="content" id="content" rows="4" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+            {% else %}
+            <p><a href="{{ url_for('login') }}">Log in</a> to submit a review.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

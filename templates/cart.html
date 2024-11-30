@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <a href="{{ url_for('home') }}"> <u>Back to Home</u></a>
+    </header>
+    <main>
+        <!-- Check if the cart contains items -->
+        {% if cart_items %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>${{ "%.2f" % item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ "%.2f" % (item.quantity * item.product.price) }}</td>
+                    <td>
+                        <!-- Remove Item from Cart -->
+                        <form method="post" action="{{ url_for('remove_from_cart', product_id=item.product.id) }}">
+                            <button type="submit" class="delete-button">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="cart-total">
+            <p><strong>Total: ${{ "%.2f" % total_price }}</strong></p>
+            <!-- Place Order -->
+            <form method="post" action="{{ url_for('place_order') }}">
+                <button type="submit" class="button">Place Order</button>
+            </form>
+        </div>
+        {% else %}
+        <p>Your cart is empty. <a href="{{ url_for('home') }}">Continue shopping</a>.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

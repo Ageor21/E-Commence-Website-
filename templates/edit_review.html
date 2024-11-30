@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Review</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Edit Your Review</h1>
+        <a href="{{ url_for('product_view', product_id=product_id) }}" class="back-link">Back to Product</a>
+    </header>
+    <main>
+        <form method="post" class="review-form">
+            <label for="rating">Rating (1-5):</label>
+            <select name="rating" id="rating" required>
+                {% for i in range(1, 6) %}
+                <option value="{{ i }}" {% if i == review.rating %}selected{% endif %}>{{ i }}</option>
+                {% endfor %}
+            </select>
+            <label for="content">Your Review:</label>
+            <textarea name="content" id="content" rows="4" required>{{ review.content }}</textarea>
+            <button type="submit">Update Review</button>
+        </form>
+    </main>
+</body>
+</html>

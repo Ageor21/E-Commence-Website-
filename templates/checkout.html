@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+        <a href="{{ url_for('cart') }}"><u>Back to Home</u></a>
+    </header>
+    <main>
+        <h2>Order Summary</h2>
+        <ul>
+            {% for product in products %}
+            <li>{{ product.name }} x {{ cart[product.id|string] }} = ${{ product.price * cart[product.id|string] }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Total: ${{ total_price }}</h3>
+        <form method="post" action="{{ url_for('place_order') }}">
+            <button type="submit">Place Order</button>
+        </form>
+    </main>
+</body>
+</html>

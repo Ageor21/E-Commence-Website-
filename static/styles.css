@@ -1,0 +1,699 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+header form {
+    margin-top: 1rem;
+}
+
+header form input {
+    padding: 0.5rem;
+    width: 70%;
+    max-width: 300px;
+}
+
+header form button {
+    padding: 0.5rem;
+    background-color: #ffdd57;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+header form button:hover {
+    background-color: #ffc107;
+}
+
+main {
+    padding: 2rem;
+}
+
+/* Header Buttons */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+}
+
+.header-content h1 {
+    margin: 0;
+}
+
+.menu-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-buttons form {
+    margin: 0;
+}
+
+.menu-button {
+    background-color: #ffdd57;
+    color: black;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.menu-button:hover {
+    background-color: #ffc107;
+    text-decoration: none;
+}
+
+/* Specific Styles for Cart and Login/Logout Buttons */
+.cart-button::before {
+    content: "🛒 ";
+}
+
+.login-button::before {
+    content: "🔑 ";
+}
+
+.login-button.logout::before {
+    content: "🔓 ";
+}
+
+/* Flash Messages */
+.flash-messages {
+    margin: 1rem auto;
+    max-width: 600px;
+    padding: 1rem;
+}
+
+.flash-message {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-message.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.flash-message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Product Grid */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.product-card {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(33.333% - 2rem);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card h3 {
+    margin: 0 0 0.5rem;
+}
+
+.product-card p {
+    margin: 0.5rem 0;
+}
+
+.product-card form {
+    margin-top: 1rem;
+}
+
+.product-card form input {
+    width: 50px;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.product-card form button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.product-card form button:hover {
+    background-color: #0056b3;
+}
+
+/* Table Styles (e.g., for Cart) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+/* Form Styles (e.g., for Login/Register) */
+.login-form, .register-form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form label, .register-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.login-form input, .register-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-form button, .register-form button {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-form button:hover, .register-form button:hover {
+    background-color: #0056b3;
+}
+
+.login-form p, .register-form p {
+    text-align: center;
+}
+
+.login-form p a, .register-form p a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-form p a:hover, .register-form p a:hover {
+    text-decoration: underline;
+}
+
+/* Bio Section Styles */
+.site-bio {
+    background-color: #f4f4f9;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.site-bio h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.site-bio p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.site-bio strong {
+    color: #ffdd57;
+}
+
+/* Profile Page */
+.profile-form, .order-history {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.profile-form input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profile-form button {
+    width: 100%;
+    padding: 0.7rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.profile-form button:hover {
+    background-color: #0056b3;
+}
+
+.order-history table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.order-history th, .order-history td {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: left;
+}
+
+.order-history th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+/* Product View Styles */
+.product-detail {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail .product-image {
+    max-width: 300px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.product-detail .product-info {
+    flex: 1;
+}
+
+.product-detail .product-info p {
+    margin: 0.5rem 0;
+}
+
+.product-detail .product-info form {
+    margin-top: 1rem;
+}
+
+.view-product-link {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.view-product-link:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Reviews Section */
+.reviews {
+    margin-top: 2rem;
+}
+
+.review-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.review {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review strong {
+    color: #007bff;
+}
+
+.review-form {
+    margin-top: 1rem;
+}
+
+.review-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.review-form select {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.review-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Review Actions */
+.review-actions {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-button, .delete-button {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #007bff;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.review-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Star Display in Reviews */
+.star-display {
+    display: inline-flex;
+    gap: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.star {
+    font-size: 1.2rem;
+    color: #ffc107; /* Gold for filled stars */
+}
+
+.star.empty {
+    color: #ccc; /* Gray for empty stars */
+}
+
+.star:hover {
+    color: #ffdd57;
+}
+
+/* Star Rating */
+.star-rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating input:checked ~ label {
+    color: #ffc107;
+}
+
+.star-rating input:focus ~ label {
+    color: #ffdd57;
+}
+
+/* Delete Button */
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Order Confirmation */
+.order-details {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.order-details h2 {
+    color: #007bff;
+}
+
+.order-details p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.next-steps ul {
+    list-style: none;
+    padding: 0;
+}
+
+.next-steps ul li {
+    margin: 0.5rem 0;
+}
+
+.next-steps ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.next-steps ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Admin Panel Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+table td form {
+    margin: 0;
+    display: inline;
+}
+
+.button {
+    background-color: #ffdd57;
+    color: black;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.3rem 0.7rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Form Styling */
+form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
